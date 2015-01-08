@@ -1,7 +1,8 @@
 name = Repair Order
 description = Assigns and tracks repairs of all rental equipment.
 core = 7.x
-version = 2.0
+version = v2.0
+package = Ponderosa_Rental_Modules
 
 files[] = repair_order.module
 files[] = repair_order.install
