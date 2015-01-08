@@ -1,0 +1,161 @@
+<?php
+
+/*
+ * Implements hook_schema().
+ */
+function repair_order_schema() {
+  $schema = array();
+  $schema['repair_orders'] = array(
+    'description' => t('User submissions for Repair Orders'),
+    'fields' => array(
+      'order_num' => array(
+        'type' => 'serial',
+        'description' => t("Repair Order # and our unique ID."),
+      ),
+      'nid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => t("The nodes Node ID and primary key for table."),
+      ),
+      'date_submitted' => array(
+        'mysql_type' => 'varchar',
+        'not null' => TRUE,
+        'length' => 55,
+        'default' => '',
+        'description' => t("Time and Date of form submission."),
+      ),
+      'unit_id' => array(
+        'type' => 'varchar',
+        'length' => 55,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => t('Unit Code.'),
+      ),
+      'repair_priority' => array(
+        'type' => 'varchar',
+        'length' => 25,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => t("Repair Priority."),
+      ),
+      'po_num' => array(
+        'type' => 'varchar',
+        'length' => 55,
+        'not null' => FALSE,
+        'default' => '',
+        'description' => t("Purchase Order #."),
+      ),
+      'last_job' => array(
+        'type' => 'varchar',
+        'length' => 55,
+        'not null' => FALSE,
+        'default' => '',
+        'description' => t("The last job this equipment was used at."),
+      ),
+//      'repairs_req' => array(
+//        'type' => 'text',
+//        'length' => 1000,
+//        'description' => t("Repairs that are required."),
+//      ),
+//      'time_req' => array(
+//        'type' => 'text',
+//        'length' => 55,
+//        'description' => t("Estimated time required for repairs."),
+//      ),
+//      'parts_req' => array(
+//        'type' => 'text',
+//        'length' => 1000,
+//        'description' => t("Parts required for repairs."),
+//      ),
+//      'parts_price' => array(
+//        'type' => 'varchar',
+//        'length' => 255,
+//        'not null' => FALSE,
+//        'default' => '',
+//        'description' => t("Prices for parts."),
+//      ),
+      'repair_order_data' => array(
+        'description' => 'Repair Order data values. (serialized)',
+        'type' => 'text',
+        'not null' => TRUE,
+      ),
+      'repair_archive_data' => array(
+        'description' => 'Repair Archive data values. (serialized)',
+        'type' => 'text',
+        'not null' => TRUE,
+      ),
+      'repair_cost' => array(
+        'type' => 'numeric',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'default' => 0,
+        'precision' => 10,
+        'scale' => 2,
+        'description' => t("Total cost of repairs."),
+      ),
+      'follow_up_alert' => array(
+        'description' => 'Date the item should be followed up.',
+        'type' => 'varchar',
+        'length' => '64',
+        'not null' => TRUE,
+      ),
+      'approved' => array(
+        'type' => 'varchar',
+        'length' => 55,
+        'not null' => FALSE,
+        'default' => 'FALSE',
+        'description' => t("Approval of Repair Order."),
+      ),
+      'completed' => array(
+        'type' => 'varchar',
+        'length' => 55,
+        'not null' => FALSE,
+        'default' => 'FALSE',
+        'description' => t("Completion of Repair Order."),
+      ),
+      'submitted_by' => array(
+        'type' => 'varchar',
+        'length' => 55,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => t('Submitted By.'),
+      ),
+      'administrator' => array(
+        'type' => 'varchar',
+        'length' => 55,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => t('Administrator who approved repair order.'),
+      ),
+      'admin_notes' => array(
+        'type' => 'varchar',
+        'length' => 500,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => t('Administrators Notes.'),
+      ),
+      'timestamp' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => t('Time the order was created.')
+      ),
+    ),
+    'indexes' => array(
+      'nid' => array('nid'),
+      'repair_priority' => array('repair_priority'),
+    ),
+    'primary key' => array('order_num', 'nid'),
+  );
+  return $schema;
+}
+
+/*
+ * Implements hook_update_N().
+ */
+function repair_order_update_7000() {
+  drupal_install_schema('repair_orders');
+}

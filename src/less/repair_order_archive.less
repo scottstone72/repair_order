@@ -1,0 +1,166 @@
+@import 'bootstrap.less';
+@import 'variables.less';
+
+//// This fix is for Bootstrap radio and checkbox buttons
+//[data-toggle="buttons"] > .btn > input[type="radio"],
+//[data-toggle="buttons"] > .btn > input[type="checkbox"] {
+//  clip: rect(1px, 1px, 1px, 1px);
+//  pointer-events: none;
+//}
+
+#filter-box {
+  .make-sm-column(3);
+  .make-md-column(3);
+  .make-lg-column(3);
+}
+
+form {
+
+  .table {
+    margin-bottom: 5px;
+    thead>tr>th, tbody>tr>th, tfoot>tr>th, thead>tr>td, tbody>tr>td, tfoot>tr>td {
+      padding-left: 0;
+    }
+  }
+
+  fieldset {
+    padding-bottom: 0;
+    .panel-body {
+      padding-bottom: 5px;
+      padding-top: 5px;
+    }
+  }
+
+  .order-num,
+  .date-submitted,
+  .unit-id,
+  .priority-level,
+  .po-num,
+  .last-job {
+    .make-sm-column(4);
+    .make-md-column(4);
+    .make-lg-column(4);
+  }
+
+  .repair-message {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+
+  .repairs-req, .parts-req {
+    .make-sm-column(9);
+    .make-md-column(9);
+    .make-lg-column(9);
+//    padding-left: 0;
+//    padding-right: 0;
+//    margin-left: 0;
+//    margin-right: 0;
+  }
+
+//  .repair-complete-button,
+//  .parts-complete-button {
+//    .make-sm-column(2);
+//    .make-md-column(2);
+//    .make-lg-column(2);
+//    margin-top: 17px;
+//    padding-top: 15px;
+//  }
+
+  .time-req, .parts-price {
+    .make-sm-column(3);
+    .make-md-column(3);
+    .make-lg-column(3);
+  }
+
+  .total-cost {
+    .pull-right;
+    .make-sm-column(3);
+    .make-md-column(3);
+    .make-lg-column(3);
+  }
+
+  .follow-up-alert, .submitted-by {
+    .pull-left;
+    .make-sm-column(4);
+    .make-md-column(4);
+    .make-lg-column(4);
+  }
+
+  .show-details, .cancel-btn-val {
+    color: #d36a00;
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+      color: darken(#d36a00, 5%);
+    }
+  }
+
+  .cancel-button {
+    font-size: 1.1em;
+    margin-top: 17px;
+    padding-top: 15px;
+//    float: right;
+    ////    padding-left: 15px;
+    //    margin-left: 15px;
+    .make-sm-column(2);
+    .make-md-column(2);
+    .make-lg-column(1);
+
+    //  @media (min-width: 1216px) {
+    //    margin: 17px 0 0 50px;
+    //    padding-top: 15px;
+    //
+    //  }
+  }
+
+  .approval-fieldset {
+    clear: both;
+  }
+
+  .update-button {
+    margin-top: 30px;
+    margin-left: 15px;
+    .make-sm-column(3);
+    .make-md-column(2);
+    .make-lg-column(2);
+  }
+
+  .admin-approver {
+    .make-sm-column(4);
+    .make-md-column(4);
+    .make-lg-column(3);
+  }
+
+  button.active.open {
+    background-color: @btn-success-bg;
+    border: @btn-success-border;
+    color: @btn-success-color;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+//.ratings-container.satisfactory {
+//  border: 2px solid darken(@btn-success-border, 5%);
+//}
+//
+//.satisfactory {
+//  background-color: @btn-success-bg;
+//}
+//
+//.ratings-container.deficient {
+//  border: 2px solid darken(@btn-danger-border, 5%);
+//}
+//
+//.deficient {
+//  background-color: @btn-danger-bg;
+//}
+
+

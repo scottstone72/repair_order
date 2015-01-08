@@ -1,0 +1,138 @@
+@import 'bootstrap.less';
+@import 'variables.less';
+
+// This hides jquery datepicker until user clicks the show details and expands a field,
+// datepicker cannot attach itself to and invisible element or find its position.
+#ui-datepicker-div {
+  display: none;
+}
+
+span.form-required, span.asterick {
+  color: #c7254e !important;
+}
+
+form {
+
+  .table {
+    margin-bottom: 5px;
+  }
+
+  fieldset {
+    padding-bottom: 0;
+    .panel-body {
+      padding-bottom: 5px;
+      padding-top: 5px;
+    }
+  }
+
+  .order-num,
+  .date-submitted,
+  .unit-id,
+  .priority-level,
+  .po-num,
+  .last-job {
+    .make-sm-column(4);
+    .make-md-column(4);
+    .make-lg-column(4);
+  }
+
+  .repair-message {
+    padding-bottom: 20px;
+  }
+
+  .repairs-req, .parts-req {
+    .make-sm-column(9);
+    .make-md-column(9);
+    .make-lg-column(9);
+  }
+
+  .time-req, .parts-price {
+    .make-sm-column(3);
+    .make-md-column(3);
+    .make-lg-column(3);
+  }
+
+  .total-cost {
+    .pull-right;
+    .make-sm-column(3);
+    .make-md-column(3);
+    .make-lg-column(3);
+  }
+
+  .follow-up-alert, .submitted-by {
+    .pull-left;
+    .make-sm-column(4);
+    .make-md-column(4);
+    .make-lg-column(4);
+  }
+
+    .show-details, .cancel-btn-val {
+      color: #d36a00;
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+        color: darken(#d36a00, 5%);
+      }
+    }
+
+  .cancel-button {
+    font-size: 1.3em;
+    margin-top: 17px;
+    padding-top: 15px;
+////    padding-left: 15px;
+//    margin-left: 15px;
+    .make-sm-column(2);
+    .make-md-column(2);
+    .make-lg-column(1);
+
+    //  @media (min-width: 1216px) {
+    //    margin: 17px 0 0 50px;
+    //    padding-top: 15px;
+    //
+    //  }
+  }
+
+  .approval-fieldset {
+    clear: both;
+  }
+
+  .submit-button {
+    margin-top: 32px;
+    margin-left: 15px;
+    .make-sm-column(3);
+    .make-md-column(2);
+    .make-lg-column(2);
+  }
+
+  .admin-approver {
+    .make-sm-column(4);
+    .make-md-column(4);
+    .make-lg-column(3);
+  }
+}
+
+
+
+
+
+
+
+
+
+//.ratings-container.satisfactory {
+//  border: 2px solid darken(@btn-success-border, 5%);
+//}
+//
+//.satisfactory {
+//  background-color: @btn-success-bg;
+//}
+//
+//.ratings-container.deficient {
+//  border: 2px solid darken(@btn-danger-border, 5%);
+//}
+//
+//.deficient {
+//  background-color: @btn-danger-bg;
+//}
+
+

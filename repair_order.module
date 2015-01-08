@@ -1,0 +1,169 @@
+<?php
+
+/**
+ *	Implements hook_help().
+ */
+function repair_order_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#repair_order': {
+      $help_text = '<p>' . t('This form is for submitting repair orders for work needed on
+      rental equipment which then has to be approved by the administrator.') . '</p>';
+      return $help_text;
+    }
+  }
+}
+
+/**
+ *	Implements hook_permission().
+ */
+function repair_order_permission() {
+  return array(
+    'view repair order form' => array(
+      'title' => t('Access Repair Order Form'),
+      'description' => t('Access to the repair order form page.'),
+      'restrict access' => TRUE,
+    ),
+    'view repair order approvals and submissions' => array(
+      'title' => t('Access Repair Order Approvals and Submissions'),
+      'description' => t('Access the repair order approval and submissions pages.'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function repair_order_menu() {
+  $items = array();
+
+  $items['repair_order'] = array(
+    'title' => 'Repair Order Form',
+    'description' => t('Rental equipment repair order form.'),
+    'page callback' => 'repair_order_page',
+    'access arguments' => array('view repair order form'),
+    'file' => 'repair.order.inc',
+  );
+
+  $items['repair_order/order_print'] = array(
+    'page callback' => 'repair_order_print_page',
+    'access arguments' => array('access content'),
+    'file' => 'repair_order.print.inc',
+    'type' => MENU_CALLBACK,
+  );
+
+  //  Add menu item for Approvals page
+  $items['repair_order/approval'] = array(
+    'title' => 'Repair Order Approvals',
+    'description' => t('Repair Orders awaiting approval.'),
+    'page callback' => 'repair_order_approval_page',
+    'access arguments' => array('view repair order approvals and submissions'),
+    'file' => 'repair_order.approval.inc',
+  );
+//  // This is a popup modal form that is used with the Approvals page for editing submissions.
+//  $items['repair_order/approval_popup/%ctools_js/%'] = array(
+//    'title' => 'Edit Repair Order',
+//    'page callback' => 'repair_order_approval_popup',
+//    'page arguments' => array(2,3),
+//    'access callback' => TRUE,
+//    'file' => 'repair_order.approval_popup.inc',
+//    'type' => MENU_CALLBACK,
+//  );
+
+  //  Add menu item for Approvals page
+  $items['repair_order/open_repairs'] = array(
+    'title' => 'Open Repairs',
+    'description' => t('Current open repairs that are being done.'),
+    'page callback' => 'open_repair_orders_page',
+    'access arguments' => array('view repair order approvals and submissions'),
+    'file' => 'repair_order.open.inc',
+  );
+
+  $items['repair_order/open_repairs/print/%'] = array(
+    'title' => '',
+    'page callback' => 'open_repair_print',
+    'page arguments' => array(3),
+    'access arguments' => array('view repair order approvals and submissions'),
+    'access callback' => TRUE,
+    'file' => 'repair_order.open_print.inc',
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['repair_order/archived_repairs'] = array(
+    'title' => 'Archived Repair Orders',
+    'description' => t('Find repair history of each rental item.'),
+    'page callback' => 'archived_repair_orders_page',
+    'access arguments' => array('view repair order approvals and submissions'),
+    'file' => 'repair_order.archive.inc',
+  );
+
+  $items['repair_order/archived_repairs/print/%'] = array(
+    'title' => '',
+    'page callback' => 'archived_repair_orders_print',
+    'page arguments' => array(3),
+    'access arguments' => array('view repair order approvals and submissions'),
+    'access callback' => TRUE,
+    'file' => 'repair_order.archive_print.inc',
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_views_api().
+ * Used for declaring our custom table to views.
+ * @return array
+ */
+//function repair_order_views_api() {
+//  return array(
+//    'api' => 3,
+//    'path' => drupal_get_path('module', 'repair_order') . '/includes',
+//    //'template path' => drupal_get_path('module', 'repair_order') . '/sass',
+//  );
+//}
+
+/**
+ * Implements hook_mail()
+ * Using to send email from transfer request submissions to administrator
+ */
+function repair_order_mail($key, &$message, $params) {
+  $language = $message['language'];
+  switch ($key) {
+    case 'new_repair_order':
+      $vars = array();
+      $order_num = $params['order_num'];
+      $date = $params['date_submitted'];
+
+      $message['subject'] = t('New Repair Order', $vars, array($language->language));
+      $message['body'][] = t("A new Repair Order# @order_num has been submitted on @date,
+        please click the following link below to view the repair order. \n\n",
+          array('order_num' => $order_num, '@date' => $date)) .
+        l('Login ','http://ponderosarentals.com/repair_order_approval');
+      break;
+  }
+}
+
+
+/**
+ * Adding multiple forms to the page.
+ * This form is called when drupal_retrieve_form() can't find a matching $form_id.
+ * This file has to be in the .module file to work properly.
+ */
+function repair_order_forms($form_id, $args) {
+  $forms = array();
+
+  if (substr($form_id, 0,27) == 'repair_order_approval_form_' ) {
+    $forms[$form_id] = array('callback' => 'repair_order_approval_form');
+  }
+
+  if (substr($form_id, 0,24) == 'open_repair_orders_form_' ) {
+    $forms[$form_id] = array('callback' => 'open_repair_orders_form');
+  }
+
+  if (substr($form_id, 0,28) == 'archived_repair_orders_form_' ) {
+    $forms[$form_id] = array('callback' => 'archived_repair_orders_form');
+  }
+
+  return $forms;
+}

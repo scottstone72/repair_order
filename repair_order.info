@@ -1,0 +1,15 @@
+name = Repair Order
+description = Assigns and tracks repairs of all rental equipment.
+core = 7.x
+version = 2.0
+
+files[] = repair_order.module
+files[] = repair_order.install
+files[] = repair_order.approval.inc
+files[] = repair.order.inc
+files[] = repair_order.print.inc
+files[] = repair_order.archive.inc
+files[] = repair_order.archive_print.inc
+files[] = repair_order.open.inc
+files[] = repair_order.open_print.inc
+files[] = includes/class.repair_order.inc.php

@@ -1,0 +1,98 @@
+@import 'bootstrap.less';
+@import 'variables.less';
+
+/* This bit of css is for disabling the ajax throbber */
+.ajax-progress, .ajax-progress-throbber {
+    display: none;
+}
+
+span.form-required, span.asterick {
+  color: #c7254e !important;
+}
+
+//#repair-order-form {
+
+  .chosen-container {
+    width: 100% !important;
+  }
+
+  .order-num,
+  .date-submitted,
+  .unit-id,
+  .repair-priority,
+  .last-job,
+  .po-num {
+    .make-sm-column(4);
+    .make-md-column(4);
+    .make-lg-column(4);
+  }
+
+  .repair-textarea, .parts-textarea {
+    padding-left: 0;
+    margin-left: 0;
+    .make-sm-column(9);
+    .make-md-column(9);
+    .make-lg-column(9);
+  }
+
+  .repair-time, .price {
+    padding-right: 0;
+    .make-sm-column(3);
+    .make-md-column(3);
+    .make-lg-column(3);
+  }
+
+  .add, .remove {
+    .pull-left;
+    margin-left: 15px;
+  }
+
+  #local_app_change_price_wrapper {
+    .pull-right;
+    .make-sm-column(3);
+    .make-md-column(3);
+    .make-lg-column(3);
+  }
+
+  .follow-up-alert, .submitted-by {
+    .make-sm-column(6);
+    .make-md-column(6);
+    .make-lg-column(6);
+  }
+
+  .panel-body {
+    clear: left;
+    padding: 5px 0 15px 0;
+  }
+
+  #row-3, #row-4 {
+    margin: 10px 0 15px 0;
+  }
+
+  #row-5 {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .follow-up-alert {
+    margin-left: 0;
+  }
+
+  .submitted-by {
+    margin-right: 0;
+  }
+
+  .panel {
+    margin-bottom: 5px;
+  }
+
+  #edit-submit-button {
+    margin: 15px 0 15px 15px;
+  }
+
+  .group-result {
+    background-color: #ff8100;
+    color: #3a2a1d;
+  }
+
+//}
