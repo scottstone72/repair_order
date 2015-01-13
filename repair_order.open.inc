@@ -343,7 +343,7 @@ function open_repair_orders_form($form, &$form_state, $args) {
     '#suffix' => '</div>',
   );
 
-  $form['container' . $order_num]['row_3_open']['#markup'] = '<div class="row">'; // Open row 3
+//  $form['container' . $order_num]['row_3_open']['#markup'] = '<div class="row">'; // Open row 3
 
   $form['container' . $order_num]['admin']['admin_approver'] = array(
     '#type' => 'textfield',
@@ -375,21 +375,21 @@ function open_repair_orders_form($form, &$form_state, $args) {
     '#suffix' => '</div>',
   );
 
-  $form['container' . $order_num]['admin']['cancel'] = array(
-    '#markup' => '<div><span id="' . $order_num . '"  class="cancel-btn-val">Cancel</span></div>',
-    '#prefix' => '<div class="cancel-button">',
-    '#suffix' => '</div>',
-  );
-
-  $form['container' . $order_num]['row_3_closed']['#markup'] = '</div>'; // Close row 3
+//  $form['container' . $order_num]['row_3_closed']['#markup'] = '</div>'; // Close row 3
 
 
-  $form['container' . $order_num]['submit'] = array(
+  $form['container' . $order_num]['admin']['submit'] = array(
 	'#type' => 'submit',
 	'#value' => t('Repair Completed'),
-	'#attributes' => array('class' => array('btn btn-success')),
+	'#attributes' => array('class' => array('btn btn-primary')),
 	'#prefix' => '<div class="submit-button">',
 	'#suffix' => '</div>',
+  );
+
+  $form['container' . $order_num]['admin']['cancel'] = array(
+    '#markup' => '<div><span id="' . $order_num . '"  class="cancel-btn-val">Hide Form</span></div>',
+    '#prefix' => '<div class="cancel-button">',
+    '#suffix' => '</div>',
   );
 
   return $form;

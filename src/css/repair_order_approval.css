@@ -6145,6 +6145,13 @@ span.form-required,
 span.asterick {
   color: #c7254e !important;
 }
+form table tr td:first-child,
+form thead tr th:first-child {
+  display: none;
+}
+form .approval-fieldset.panel.panel-default {
+  border: 3px solid #ffffff;
+}
 form .table {
   margin-bottom: 5px;
 }
@@ -6323,9 +6330,6 @@ form .cancel-btn-val:hover {
   color: #ba5d00;
 }
 form .cancel-button {
-  font-size: 1.3em;
-  margin-top: 17px;
-  padding-top: 15px;
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -6334,23 +6338,24 @@ form .cancel-button {
 @media (min-width: 768px) {
   form .cancel-button {
     float: left;
-    width: 16.66666667%;
+    width: 100%;
   }
 }
 @media (min-width: 992px) {
   form .cancel-button {
     float: left;
-    width: 16.66666667%;
+    width: 100%;
   }
 }
 @media (min-width: 1200px) {
   form .cancel-button {
     float: left;
-    width: 8.33333333%;
+    width: 100%;
   }
 }
-form .approval-fieldset {
+form .approval-fieldset.panel.panel-default {
   clear: both;
+  border: 3px solid #ffffff;
 }
 form .submit-button {
   margin-top: 32px;
@@ -6379,6 +6384,7 @@ form .submit-button {
   }
 }
 form .admin-approver {
+  margin-bottom: 30px;
   position: relative;
   min-height: 1px;
   padding-left: 15px;

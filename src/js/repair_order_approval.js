@@ -4,7 +4,7 @@
     Drupal.behaviors.repair_approval_form_collaspe = {
         attach: function (context, settings) {
 
-            $('table tr td:first-child, thead tr th:first-child').remove(); // Remove the checkbox in table.
+            //$('table tr td:first-child, thead tr th:first-child').remove(); // Remove the checkbox in table.
 
           $('.approval-fieldset').once().hide(); // Hide the forms on page load.
 

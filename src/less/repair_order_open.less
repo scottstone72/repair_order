@@ -20,11 +20,16 @@ span.form-required, span.asterick {
 
 form {
 
+  table tr td:first-child, thead tr th:first-child {
+    display: none;
+  }
+
+  .approval-fieldset.panel.panel-default {
+    border: 3px solid #ffffff;
+  }
+
   .table {
     margin-bottom: 5px;
-    thead>tr>th, tbody>tr>th, tfoot>tr>th, thead>tr>td, tbody>tr>td, tfoot>tr>td {
-      padding-left: 0;
-    }
   }
 
   fieldset {
@@ -100,21 +105,9 @@ form {
   }
 
   .cancel-button {
-    font-size: 1.1em;
-    margin-top: 17px;
-    padding-top: 15px;
-//    float: right;
-    ////    padding-left: 15px;
-    //    margin-left: 15px;
-    .make-sm-column(2);
-    .make-md-column(2);
-    .make-lg-column(1);
-
-    //  @media (min-width: 1216px) {
-    //    margin: 17px 0 0 50px;
-    //    padding-top: 15px;
-    //
-    //  }
+    .make-sm-column(12);
+    .make-md-column(12);
+    .make-lg-column(12);
   }
 
   .approval-fieldset {
@@ -122,17 +115,25 @@ form {
   }
 
   .update-button {
-    margin-top: 30px;
+    margin-top: 32px;
     margin-left: 15px;
     .make-sm-column(3);
-    .make-md-column(2);
-    .make-lg-column(2);
+    .make-md-column(3);
+    .make-lg-column(3);
+  }
+
+  .submit-button {
+    margin-bottom: 30px;
+    .make-sm-column(12);
+    .make-md-column(12);
+    .make-lg-column(12);
   }
 
   .admin-approver {
+    margin-bottom: 30px;
     .make-sm-column(4);
     .make-md-column(4);
-    .make-lg-column(3);
+    .make-lg-column(4);
   }
 
   button.active.open {
@@ -142,29 +143,5 @@ form {
   }
 
 }
-
-
-
-
-
-
-
-
-
-//.ratings-container.satisfactory {
-//  border: 2px solid darken(@btn-success-border, 5%);
-//}
-//
-//.satisfactory {
-//  background-color: @btn-success-bg;
-//}
-//
-//.ratings-container.deficient {
-//  border: 2px solid darken(@btn-danger-border, 5%);
-//}
-//
-//.deficient {
-//  background-color: @btn-danger-bg;
-//}
 
 
