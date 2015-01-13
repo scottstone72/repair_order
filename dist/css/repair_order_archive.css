@@ -6113,16 +6113,15 @@ button.close {
     width: 25%;
   }
 }
+form table tr td:first-child,
+form thead tr th:first-child {
+  display: none;
+}
+form .approval-fieldset.panel.panel-default {
+  border: 3px solid #ffffff;
+}
 form .table {
   margin-bottom: 5px;
-}
-form .table thead > tr > th,
-form .table tbody > tr > th,
-form .table tfoot > tr > th,
-form .table thead > tr > td,
-form .table tbody > tr > td,
-form .table tfoot > tr > td {
-  padding-left: 0;
 }
 form fieldset {
   padding-bottom: 0;
@@ -6300,9 +6299,6 @@ form .cancel-btn-val:hover {
   color: #ba5d00;
 }
 form .cancel-button {
-  font-size: 1.1em;
-  margin-top: 17px;
-  padding-top: 15px;
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -6311,51 +6307,27 @@ form .cancel-button {
 @media (min-width: 768px) {
   form .cancel-button {
     float: left;
-    width: 16.66666667%;
+    width: 100%;
   }
 }
 @media (min-width: 992px) {
   form .cancel-button {
     float: left;
-    width: 16.66666667%;
+    width: 100%;
   }
 }
 @media (min-width: 1200px) {
   form .cancel-button {
     float: left;
-    width: 8.33333333%;
+    width: 100%;
   }
 }
-form .approval-fieldset {
+form .approval-fieldset.panel.panel-default {
   clear: both;
-}
-form .update-button {
-  margin-top: 30px;
-  margin-left: 15px;
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 768px) {
-  form .update-button {
-    float: left;
-    width: 25%;
-  }
-}
-@media (min-width: 992px) {
-  form .update-button {
-    float: left;
-    width: 16.66666667%;
-  }
-}
-@media (min-width: 1200px) {
-  form .update-button {
-    float: left;
-    width: 16.66666667%;
-  }
+  border: 3px solid #ffffff;
 }
 form .admin-approver {
+  margin-bottom: 30px;
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -6376,7 +6348,7 @@ form .admin-approver {
 @media (min-width: 1200px) {
   form .admin-approver {
     float: left;
-    width: 25%;
+    width: 33.33333333%;
   }
 }
 form button.active.open {

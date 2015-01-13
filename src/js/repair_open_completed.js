@@ -5,9 +5,11 @@
     attach: function (context, settings) {
 
       //$('table tr td:first-child, thead tr th:first-child').remove(); // Remove the checkbox in table.
-      $('input:checkbox').parent().remove();
+      //$('input:checkbox').parent().remove();
 
-      $('.approval-fieldset').once().hide(); // Hide the forms on page load.
+      $('.approval-fieldset', context).once(function (context) {
+        $(this).hide(); // Hide the forms on page load.
+      });
 
       // Toggle fieldsets when user clicks show Details or the Cancel button
       $(".show-details, .cancel-btn-val", context).click(function () {
@@ -82,12 +84,9 @@
 
                 // Add selected btn to traversed list
                 repairArr.push(id);
-                //console.log(repairArr);
 
                   // Set cookie with updated values
                   $.cookie('repair_data', repairArr);
-                  //console.log(repairArr);
-                  //console.log($.cookie('repair_data'));
                 }
 
                 else {
@@ -98,9 +97,6 @@
                   });
 
                   $.cookie('repair_data', repairArr);
-                  //console.log(repairArr);
-                  //console.log($.cookie('repair_data'));
-
               }
             });
         }
@@ -124,12 +120,10 @@
         var repair_field = 'fieldset#repair_field_' + tableNum;
         var part_field = 'fieldset#part_field_' + tableNum;
 
-//        console.log(repair_field + id);
-
         $(repair_field + ' ' +  id).addClass('active');
         $(part_field + ' ' +  id).addClass('active');
       });
     }
 
-
+  //Drupal.addBehavior('http://ponderosa-new.dd/repair_order/archived_repairs');
 })(jQuery);

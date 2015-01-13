@@ -1,8 +1,8 @@
 <?php
 require_once(DRUPAL_ROOT  . '/' . drupal_get_path('module','repair_order') . '/includes/class.repair_order.inc.php');
 drupal_add_css(drupal_get_path('module', 'repair_order') . '/dist/css/min/repair_order_archive.min.css');
-drupal_add_js(drupal_get_path('module', 'repair_order') . '/dist/js/repair_open_completed.min.js');
 drupal_add_js(drupal_get_path('module', 'repair_order') . '/dist/js/jquery.cookie.js');
+drupal_add_js(drupal_get_path('module', 'repair_order') . '/dist/js/repair_open_completed.min.js', array('scope' => 'footer'));
 
 
 /**
@@ -373,7 +373,7 @@ function archived_repair_orders_form($form, &$form_state, $args) {
   );
 
   $form['container' . $order_num]['admin']['cancel'] = array(
-    '#markup' => '<div><span id="' . $order_num . '"  class="cancel-btn-val">Close</span></div>',
+    '#markup' => '<div><span id="' . $order_num . '"  class="cancel-btn-val">Hide Form</span></div>',
     '#prefix' => '<div class="cancel-button">',
     '#suffix' => '</div>',
   );

@@ -331,12 +331,13 @@ function repair_order_approval_form($form, &$form_state, $args) {
   $form['container' . $order_num]['admin']['submit'] = array(
 	'#type' => 'submit',
 	'#value' => t('Approve Repair'),
+	'#attributes' => array('class' => array('btn btn-primary')),
 	'#prefix' => '<div class="submit-button">',
 	'#suffix' => '</div>',
   );
 
   $form['container' . $order_num]['admin']['cancel'] = array(
-	'#markup' => '<div><span value="' . $order_num . '"  class="cancel-btn-val">Cancel</span></div>',
+	'#markup' => '<span value="' . $order_num . '"  class="cancel-btn-val">Hide Form</span>',
 	'#prefix' => '<div class="cancel-button">',
 	'#suffix' => '</div>',
   );
